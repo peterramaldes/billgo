@@ -24,6 +24,8 @@ func (h *pingHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *pingHandler) Ping(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`{"status": "alive"}`))
 }
